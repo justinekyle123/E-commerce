@@ -7,8 +7,11 @@ export interface User {
     email_verified_at: string | null;
 }
 
-export interface PageProps extends InertiaPageProps {
-    auth: {
-        user: User;
+export type PageProps<
+    T extends Record<string, unknown> = Record<string, unknown>,
+> = InertiaPageProps &
+    T & {
+        auth: {
+            user: User;
+        };
     };
-}
