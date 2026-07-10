@@ -6,7 +6,8 @@ import { Search, ShoppingCart, Menu, X } from "lucide-react";
 
 const Header = () => {
 
-    const {cart = []} = usePage<PageProps>().props;
+    // Avoid generic constraint mismatch by casting props to the local PageProps type
+    const {cart = []} = usePage().props as unknown as PageProps;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
