@@ -15,15 +15,23 @@ const Header = () => {
 
     // Handler Function
 
+    const handleMenuToggle = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    const handleSearchToggle = () => {
+        setIsSearchOpen(!isSearchOpen);
+    }
+
     return (
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100"> 
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-8">
-                        <Link href={"/"} className="text-2xl font-bold text-primary-500">
+                        <Link href={"/"} className="text-2xl font-bold text-primary-600">
                             KyleStore
                         </Link>
-                        <nav className="hidden md:flex md:items-center md:gap-6" role="navigation">
+                        <nav className="hidden sm:flex sm:items-center sm:gap-6" role="navigation">
                             <Link className="text-sm font-medium text-gray-700 transition-colors 
                             hover:text-primary-600">
                                 Home
@@ -36,12 +44,13 @@ const Header = () => {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <button type="button"
-                        onClick={() => {}}
+                        <button 
+                        onClick={handleSearchToggle} type="button"
                         className="p-2 text-gray-600 transition-colors rounded-lg
                         hover:text-primary-600 hover:bg-gray-100" tabIndex={0}>
                             <Search className="w-5 h-5" />
                         </button>
+
                         <Link href={"/card"} className="relative p-2 text-gray-600 transition-colors rounded-lg
                         hover:text-primary-600 hover:bg-gray-100">
                             <ShoppingCart className="w-5 h-5"/>
@@ -52,8 +61,8 @@ const Header = () => {
                         </Link>
 
                         <button 
-                        onClick={() => {}}
-                        className="md:hidden p-2 text-gray-600 transition-colors
+                        onClick={handleMenuToggle} type="button"
+                        className="sm:hidden p-2 text-gray-600 transition-colors
                         rounded-lg hover:text-primary-600 hover:bg-gray-100">
                             {isMenuOpen ? (
                                 <X className="w5- h-5"/>
@@ -64,6 +73,36 @@ const Header = () => {
                     </div>
 
                 </div>
+
+                    {isSearchOpen && (
+                        
+                            <div className="py-4 border-t border-gray-100">
+                                <div className="relative">
+                                    <Search className="w-5 h-5 absolute text-gray-300 
+                                    transform -translate-y-1/2 left-3 top-1/2" />
+                                    <input type="text" placeholder="Search products..."
+                                     className="w-full py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400
+                                     border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" />
+                                </div>
+                            </div>
+                    )}
+                    
+
+                    {isMenuOpen &&  (
+                        <nav className="py-4 border-gray-600 transition-colors hover:text-primary-600"
+                        role="navigation" aria-label="Mobile navigation">
+                            <div className="flex gap-4">
+                            <Link className="text-sm font-medium text-gray-700 transition-colors 
+                            hover:text-primary-600">
+                                Home
+                            </Link>
+                            <Link className="text-sm font-medium text-gray-700 transition-colors 
+                            hover:text-primary-600">
+                                Product
+                            </Link>
+                            </div>
+                        </nav>
+                    )} 
             </div>
         </header>
     );
