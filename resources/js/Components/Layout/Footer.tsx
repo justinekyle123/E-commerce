@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { HomeIcon } from "lucide-react";
 
 
 const Footer = () => {
