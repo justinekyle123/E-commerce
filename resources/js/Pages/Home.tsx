@@ -2,14 +2,14 @@ import MainLayout from "@/Components/Layout/MainLayout";
 import ProductGrid from "@/Components/Product/ProductGrid";
 import { Product } from "@/types";
 import { Head, Link } from "@inertiajs/react";
-import React from "react";
+
 
 interface HomeProps{
     featuredProducts: Product[];
     newProducts: Product[];
 }
 
-const Home = ({featuredProducts, newProducts}: HomeProps) =>{
+const Home = ({featuredProducts, newProducts}: HomeProps) => {
     return (
         <MainLayout>
             <Head title="Home" />
@@ -42,14 +42,36 @@ const Home = ({featuredProducts, newProducts}: HomeProps) =>{
                         </div>
                     </div>
                 </div>
+            </section>           
+           
+            <section className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-2xl font-bold text-gray-900">New Arrivals</h2>
+                    <Link 
+                        href={"/products"}
+                        className="inline-flex items-center gap-1 text-sm font-medium
+                        transition-colors text-primary-600 hover:text-primary-700">
+                        View All
+                    </Link>
+                </div>               
+                <ProductGrid products={newProducts}/>
             </section>
 
-            <section className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between mb-">
-                    <h2 className="text-2xl font-bold text-gray-900">New Arrivals</h2>
-                    <ProductGrid products={newProducts}/>
-                </div>
+             <section className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                        Featured Products
+                    </h2>
+                    <Link 
+                        href={"/products"}
+                        className="inline-flex items-center gap-1 text-sm font-medium
+                        transition-colors text-primary-600 hover:text-primary-700">
+                        View All
+                    </Link>
+                </div>               
+                <ProductGrid products={newProducts}/>
             </section>
+
         </MainLayout>
     );
 };

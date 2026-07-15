@@ -28,11 +28,13 @@ const Header = () => {
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-8">
-                        <Link href={"/"} className="text-2xl font-bold text-primary-600">
+                        <Link href="" className="text-2xl font-bold text-primary-600">
                             KyleStore
                         </Link>
                         <nav className="hidden sm:flex sm:items-center sm:gap-6" role="navigation">
-                            <Link className="text-sm font-medium text-gray-700 transition-colors 
+                            <Link 
+                            href={"/"}
+                            className="text-sm font-medium text-gray-700 transition-colors 
                             hover:text-primary-600">
                                 Home
                             </Link>
@@ -103,7 +105,7 @@ const Header = () => {
                             </div>
                         </nav>
                     )} 
-            </div>
+                </div>
         </header>
     );
 };
