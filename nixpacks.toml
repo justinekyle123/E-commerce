@@ -5,7 +5,7 @@ nixPkgs = ["...", "nodejs"]
 cmds = ["composer install --no-dev --no-interaction --prefer-dist", "npm ci"]
 
 [phases.build]
-cmds = ["npm run build", "php artisan config:cache", "php artisan route:cache", "php artisan migrate --force"]
+cmds = ["npm run build", "php artisan config:cache", "php artisan route:cache", "php artisan migrate --force", "php artisan db:seed --force"]
 
 [start]
 cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
